@@ -986,14 +986,6 @@ def _get_last_non_comment_leaf(line: Line) -> Optional[int]:
 
 
 def _safe_add_trailing_comma(safe: bool, delimiter_priority: int, line: Line) -> Line:
-    if (
-        safe
-        and delimiter_priority == COMMA_PRIORITY
-        and line.leaves[-1].type != token.COMMA
-        and line.leaves[-1].type != STANDALONE_COMMENT
-    ):
-        new_comma = Leaf(token.COMMA, ",")
-        line.append(new_comma)
     return line
 
 

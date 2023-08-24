@@ -1081,13 +1081,7 @@ def format_str(src_contents: str, *, mode: Mode) -> str:
         hey
 
     """
-    dst_contents = _format_str_once(src_contents, mode=mode)
-    # Forced second pass to work around optional trailing commas (becoming
-    # forced trailing commas on pass 2) interacting differently with optional
-    # parentheses.  Admittedly ugly.
-    if src_contents != dst_contents:
-        return _format_str_once(dst_contents, mode=mode)
-    return dst_contents
+    return _format_str_once(src_contents, mode=mode)
 
 
 def _format_str_once(src_contents: str, *, mode: Mode) -> str:
